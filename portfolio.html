@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pfizer Oncology: Padcev 1L Launch Strategy — PMM Portfolio</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --pfizer-dark: #012C5E;
+    --pfizer-blue: #0093D0;
+    --pfizer-light: #E8F4FB;
+    --pfizer-mid: #006BA6;
+    --clinical-green: #1A7A4A;
+    --clinical-green-l: #D4EDDA;
+    --amber: #B45309;
+    --amber-l: #FEF3C7;
+    --red: #B91C1C;
+    --red-l: #FEE2E2;
+    --slate: #334155;
+    --mist: #64748B;
+    --fog: #94A3B8;
+    --border: #E2E8F0;
+    --white: #FFFFFF;
+    --snow: #F8FAFC;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--snow);
+    color: var(--slate);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* ---- TOP BAR ---- */
+  .top-bar {
+    background: var(--pfizer-dark);
+    padding: 10px 0;
+  }
+
+  .top-bar-inner {
+    max-width: 1200px; margin: 0 auto; padding: 0 40px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+
+  .top-bar-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 500; color: rgba(255,255,255,0.5);
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+
+  .top-bar-tag span { color: var(--pfizer-blue); }
+
+  /* ---- HEADER ---- */
+  header {
+    background: var(--pfizer-dark);
+    padding: 60px 0 80px;
+    position: relative; overflow: hidden;
+  }
+
+  header::after {
+    content: '';
+    position: absolute; bottom: -1px; left: 0; right: 0;
+    height: 40px;
+    background: var(--snow);
+    clip-path: polygon(0 100%, 100% 100%, 100% 0);
+  }
+
+  .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+  .header-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(0,147,208,0.15);
+    border: 1px solid rgba(0,147,208,0.3);
+    color: var(--pfizer-blue);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 5px 14px; border-radius: 20px;
+    margin-bottom: 28px;
+  }
+
+  .header-badge::before { content: '◆'; font-size: 8px; }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 700; line-height: 1.08;
+    letter-spacing: -0.02em; color: var(--white);
+    margin-bottom: 20px; max-width: 900px;
+  }
+
+  h1 em { color: var(--pfizer-blue); font-style: italic; }
+
+  .header-sub {
+    font-size: 17px; font-weight: 300; color: rgba(255,255,255,0.65);
+    max-width: 680px; line-height: 1.65; margin-bottom: 44px;
+  }
+
+  .header-grid {
+    display: grid; grid-template-columns: repeat(4, auto);
+    width: fit-content;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px; overflow: hidden;
+  }
+
+  .hg-item {
+    padding: 14px 28px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .hg-item:last-child { border-right: none; }
+  .hg-label { font-size: 9px; font-weight: 500; color: rgba(255,255,255,0.3); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 4px; }
+  .hg-value { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.85); }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+  /* ---- SECTIONS ---- */
+  .section { padding: 72px 0; }
+  .section-border { border-bottom: 1px solid var(--border); }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 500; color: var(--pfizer-blue);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    margin-bottom: 14px;
+    display: flex; align-items: center; gap: 12px;
+  }
+
+  .section-label::after {
+    content: ''; flex: 1; max-width: 60px;
+    height: 1px; background: var(--pfizer-blue); opacity: 0.3;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 700; color: var(--pfizer-dark);
+    letter-spacing: -0.02em; margin-bottom: 8px;
+  }
+
+  h2 em { color: var(--pfizer-blue); font-style: italic; }
+
+  .section-intro {
+    font-size: 16px; color: var(--mist); max-width: 680px;
+    line-height: 1.65; margin-bottom: 48px;
+  }
+
+  /* ---- THE INVESTMENT CONTEXT ---- */
+  .context-banner {
+    background: var(--pfizer-dark);
+    border-radius: 12px; padding: 40px 48px;
+    display: grid; grid-template-columns: 1fr 2fr;
+    gap: 48px; align-items: center;
+    margin-bottom: 0;
+  }
+
+  .context-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px; font-weight: 700;
+    color: var(--pfizer-blue); line-height: 1;
+  }
+
+  .context-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: rgba(255,255,255,0.4);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  .context-body { font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.7; }
+  .context-body strong { color: var(--white); }
+
+  /* ---- CLINICAL DATA VISUALIZATION ---- */
+  .ev302-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+    margin-bottom: 32px;
+  }
+
+  .ev302-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 28px 24px;
+    position: relative; overflow: hidden;
+  }
+
+  .ev302-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .ev302-card:nth-child(1)::before { background: var(--pfizer-blue); }
+  .ev302-card:nth-child(2)::before { background: var(--clinical-green); }
+  .ev302-card:nth-child(3)::before { background: var(--amber); }
+  .ev302-card:nth-child(4)::before { background: var(--pfizer-mid); }
+
+  .ev302-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--fog);
+    margin-bottom: 16px;
+  }
+
+  .ev302-value { font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 700; line-height: 1; margin-bottom: 6px; }
+  .ev302-value.blue { color: var(--pfizer-blue); }
+  .ev302-value.green { color: var(--clinical-green); }
+  .ev302-value.amber { color: var(--amber); }
+  .ev302-value.mid { color: var(--pfizer-mid); }
+
+  .ev302-desc { font-size: 12px; color: var(--mist); line-height: 1.5; }
+
+  /* Comparison bars */
+  .comparison-section {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    margin-top: 32px;
+  }
+
+  .compare-card {
+    background: var(--white); border: 1px solid var(--border);
+    padding: 28px 24px; border-radius: 2px;
+  }
+
+  .compare-title {
+    font-size: 12px; font-weight: 600; color: var(--slate);
+    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 20px;
+  }
+
+  .bar-group { margin-bottom: 16px; }
+  .bar-label { display: flex; justify-content: space-between; margin-bottom: 6px; }
+  .bar-name { font-size: 12px; color: var(--mist); }
+  .bar-num { font-size: 12px; font-weight: 600; color: var(--slate); }
+
+  .bar-track { background: var(--snow); height: 8px; border-radius: 4px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 4px; transition: width 1.2s ease; }
+  .bar-fill.ev { background: var(--pfizer-blue); }
+  .bar-fill.chemo { background: var(--border); }
+
+  /* ---- TENSIONS ---- */
+  .tensions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
+
+  .tension-card {
+    background: var(--white); border: 1px solid var(--border);
+    padding: 32px 28px;
+  }
+
+  .tension-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 500; color: var(--pfizer-blue);
+    letter-spacing: 0.1em; margin-bottom: 12px;
+  }
+
+  .tension-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 700; color: var(--pfizer-dark);
+    margin-bottom: 12px; line-height: 1.2;
+  }
+
+  .tension-body { font-size: 13.5px; color: var(--mist); line-height: 1.65; }
+
+  /* ---- DELIVERABLES ---- */
+  .deliverables-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 40px; }
+
+  .del-card {
+    background: var(--white); border: 1px solid var(--border);
+    padding: 32px 28px; display: flex; gap: 20px;
+    transition: background 0.3s;
+  }
+
+  .del-card:hover { background: var(--pfizer-light); }
+
+  .del-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px; font-weight: 400; color: var(--pfizer-blue);
+    opacity: 0.3; min-width: 40px; padding-top: 4px;
+  }
+
+  .del-content {}
+  .del-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; font-weight: 500; color: var(--pfizer-blue);
+    letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;
+  }
+
+  .del-title { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--pfizer-dark); font-weight: 700; margin-bottom: 8px; }
+  .del-desc { font-size: 13px; color: var(--mist); line-height: 1.6; }
+
+  .del-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+  .pill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; font-weight: 500; letter-spacing: 0.06em;
+    text-transform: uppercase; padding: 3px 8px;
+    border: 1px solid var(--border); color: var(--fog); border-radius: 2px;
+  }
+
+  /* ---- PATIENT JOURNEY ---- */
+  .journey-steps { display: flex; gap: 0; margin-top: 40px; position: relative; }
+
+  .journey-steps::before {
+    content: ''; position: absolute;
+    top: 28px; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--pfizer-light), var(--pfizer-blue), var(--pfizer-light));
+  }
+
+  .journey-step {
+    flex: 1; padding-top: 60px; padding-right: 16px;
+    position: relative;
+  }
+
+  .journey-dot {
+    position: absolute; top: 18px; left: 0;
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--white); border: 2px solid var(--pfizer-blue);
+    z-index: 2;
+  }
+
+  .journey-dot.critical { background: var(--pfizer-blue); }
+
+  .journey-step-name {
+    font-size: 11px; font-weight: 600; color: var(--pfizer-dark);
+    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;
+  }
+
+  .journey-step-desc { font-size: 11.5px; color: var(--mist); line-height: 1.55; }
+
+  .journey-pfizer {
+    background: var(--pfizer-light);
+    border: 1px solid rgba(0,147,208,0.2);
+    padding: 5px 8px; margin-top: 10px; font-size: 10px;
+    color: var(--pfizer-mid); font-weight: 500;
+    border-radius: 2px;
+  }
+
+  /* ---- COMPETITIVE MAP ---- */
+  .comp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 40px; }
+
+  .comp-card {
+    background: var(--white); border: 1px solid var(--border);
+    padding: 24px 20px;
+  }
+
+  .comp-threat {
+    display: inline-block; font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 3px 8px; border-radius: 2px;
+    margin-bottom: 14px;
+  }
+
+  .comp-threat.high { background: var(--red-l); color: var(--red); }
+  .comp-threat.complex { background: var(--amber-l); color: var(--amber); }
+  .comp-threat.emerging { background: var(--pfizer-light); color: var(--pfizer-mid); }
+
+  .comp-name { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--pfizer-dark); margin-bottom: 6px; }
+  .comp-desc { font-size: 12px; color: var(--mist); line-height: 1.55; }
+
+  /* ---- SKILLS ---- */
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 40px; }
+
+  .skill-card {
+    background: var(--pfizer-dark); padding: 28px 24px;
+  }
+
+  .skill-icon { font-size: 20px; margin-bottom: 12px; }
+  .skill-title { font-size: 12px; font-weight: 600; color: var(--white); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .skill-desc { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.55; }
+
+  /* ---- FOOTER ---- */
+  footer { background: var(--pfizer-dark); padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.06); }
+
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto; padding: 0 40px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+
+  .footer-text { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: rgba(255,255,255,0.3); }
+  .footer-disclaimer { font-size: 10px; color: rgba(255,255,255,0.2); max-width: 500px; line-height: 1.5; }
+
+  /* ---- ANIMATIONS ---- */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up { animation: fadeUp 0.6s ease forwards; opacity: 0; }
+  .d1 { animation-delay: 0.1s; }
+  .d2 { animation-delay: 0.2s; }
+  .d3 { animation-delay: 0.3s; }
+  .d4 { animation-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="top-bar-tag">PMM Portfolio Project — <span>Pharmaceutical Launch Excellence</span></div>
+    <div class="top-bar-tag">Pfizer Oncology — Padcev 1L — 2024</div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="header-badge fade-up">Pfizer Oncology / ADC Launch Strategy</div>
+    <h1 class="fade-up d1">
+      Padcev First-Line:<br>
+      <em>Turning the $43B Seagen Bet</em><br>
+      Into Market Leadership
+    </h1>
+    <p class="header-sub fade-up d2">A complete pharmaceutical launch excellence package for Pfizer's most commercially critical product: Padcev (enfortumab vedotin) in combination with pembrolizumab for first-line locally advanced or metastatic urothelial carcinoma.</p>
+    <div class="header-grid fade-up d3">
+      <div class="hg-item">
+        <div class="hg-label">Company</div>
+        <div class="hg-value">Pfizer / Astellas</div>
+      </div>
+      <div class="hg-item">
+        <div class="hg-label">Product</div>
+        <div class="hg-value">Padcev + Keytruda</div>
+      </div>
+      <div class="hg-item">
+        <div class="hg-label">FDA Approval</div>
+        <div class="hg-value">April 3, 2024</div>
+      </div>
+      <div class="hg-item">
+        <div class="hg-label">Deliverables</div>
+        <div class="hg-value">7 Documents</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+<!-- THE $43B CONTEXT -->
+<section class="section section-border">
+  <div class="section-label">The Investment Thesis</div>
+  <h2>The <em>$43 Billion</em> Context</h2>
+  <p class="section-intro">Pfizer's Seagen acquisition is the largest in its 175-year history. Padcev's first-line approval is the first and most important commercial validation of that bet.</p>
+
+  <div class="context-banner">
+    <div>
+      <div class="context-amount">$43B</div>
+      <div class="context-sub">Pfizer — Seagen acquisition<br>December 2023</div>
+    </div>
+    <div class="context-body">
+      The entire Seagen acquisition thesis rested on one prediction: that antibody-drug conjugates (ADCs) would become the dominant treatment modality in oncology, and that Seagen's ADC platform would make Pfizer the undisputed leader in that category. <strong>Padcev's first-line approval in April 2024 was the first major commercial validation of that prediction.</strong> The EV-302 trial data cut the risk of death by 53% compared to platinum-based chemotherapy, with a median overall survival of 31.5 months versus 16.1 months. That result is the most significant survival improvement in first-line bladder cancer treatment in over 30 years. This launch project builds the commercial strategy to translate that clinical breakthrough into market leadership.
+    </div>
+  </div>
+</section>
+
+<!-- CLINICAL DATA: EV-302 -->
+<section class="section section-border">
+  <div class="section-label">Clinical Foundation</div>
+  <h2>The EV-302 / KEYNOTE-A39 <em>Trial Data</em></h2>
+  <p class="section-intro">886 patients. All-comers, regardless of PD-L1 status or cisplatin eligibility. These are the numbers that change the standard of care.</p>
+
+  <div class="ev302-grid">
+    <div class="ev302-card">
+      <div class="ev302-label">Median Overall Survival</div>
+      <div class="ev302-value blue">31.5</div>
+      <div style="font-size:11px;color:var(--pfizer-blue);margin-bottom:8px;font-weight:500;">months (EV + Keytruda)</div>
+      <div class="ev302-desc">vs. 16.1 months for chemotherapy — HR 0.47 (95% CI: 0.38-0.58, p less than 0.00001)</div>
+    </div>
+    <div class="ev302-card">
+      <div class="ev302-label">Reduction in Risk of Death</div>
+      <div class="ev302-value green">53%</div>
+      <div style="font-size:11px;color:var(--clinical-green);margin-bottom:8px;font-weight:500;">vs. platinum chemotherapy</div>
+      <div class="ev302-desc">Statistically significant and clinically meaningful across all prespecified subgroups</div>
+    </div>
+    <div class="ev302-card">
+      <div class="ev302-label">Complete Response Rate</div>
+      <div class="ev302-value amber">29.1%</div>
+      <div style="font-size:11px;color:var(--amber);margin-bottom:8px;font-weight:500;">vs. 12.5% for chemotherapy</div>
+      <div class="ev302-desc">Nearly 1 in 3 patients achieve no detectable tumor on imaging. Some durable CRs exceed 24 months.</div>
+    </div>
+    <div class="ev302-card">
+      <div class="ev302-label">Objective Response Rate</div>
+      <div class="ev302-value mid">67.7%</div>
+      <div style="font-size:11px;color:var(--pfizer-mid);margin-bottom:8px;font-weight:500;">vs. 44.4% for chemotherapy</div>
+      <div class="ev302-desc">2 out of 3 patients achieve measurable tumor response. Benefit regardless of PD-L1 status.</div>
+    </div>
+  </div>
+
+  <div class="comparison-section">
+    <div class="compare-card">
+      <div class="compare-title">Overall Survival Comparison (Median Months)</div>
+      <div class="bar-group">
+        <div class="bar-label">
+          <span class="bar-name">Padcev + Keytruda (EV+P)</span>
+          <span class="bar-num">31.5 mo</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill ev" style="width:85%"></div></div>
+      </div>
+      <div class="bar-group">
+        <div class="bar-label">
+          <span class="bar-name">Platinum-Based Chemotherapy</span>
+          <span class="bar-num">16.1 mo</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill chemo" style="width:43%"></div></div>
+      </div>
+      <div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--border);font-size:11px;color:var(--fog);">Source: EV-302/KEYNOTE-A39. New England Journal of Medicine, 2024.</div>
+    </div>
+    <div class="compare-card">
+      <div class="compare-title">Response Rate Comparison</div>
+      <div class="bar-group">
+        <div class="bar-label">
+          <span class="bar-name">ORR: Padcev + Keytruda</span>
+          <span class="bar-num">67.7%</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill ev" style="width:67.7%"></div></div>
+      </div>
+      <div class="bar-group">
+        <div class="bar-label">
+          <span class="bar-name">Complete Response: EV+P</span>
+          <span class="bar-num">29.1%</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill ev" style="width:29.1%;opacity:0.6"></div></div>
+      </div>
+      <div class="bar-group">
+        <div class="bar-label">
+          <span class="bar-name">ORR: Chemotherapy</span>
+          <span class="bar-num">44.4%</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill chemo" style="width:44.4%"></div></div>
+      </div>
+      <div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--border);font-size:11px;color:var(--fog);">Benefit consistent in cisplatin-ineligible patients and PD-L1 CPS less than 10.</div>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGIC TENSIONS -->
+<section class="section section-border">
+  <div class="section-label">Strategic Context</div>
+  <h2>The Four <em>Tensions</em> This Launch Must Resolve</h2>
+  <div class="tensions-grid">
+    <div class="tension-card">
+      <div class="tension-num">TENSION 01</div>
+      <div class="tension-title">Your partner is also your competitor</div>
+      <div class="tension-body">Padcev is co-administered with Keytruda, which is marketed by Merck. Merck already owns the prescribing relationship in first-line bladder cancer. Pfizer must position Padcev as the essential anchor of the combination without appearing to compete with the partner drug that oncologists already trust. How the clinical narrative is framed determines which company builds long-term brand equity.</div>
+    </div>
+    <div class="tension-card">
+      <div class="tension-num">TENSION 02</div>
+      <div class="tension-title">Justifying a premium price to a resistant payer</div>
+      <div class="tension-body">The Padcev plus Keytruda combination costs significantly more than platinum-based chemotherapy. Securing formulary access before prescribing begins requires a health economic argument that leads with quality-adjusted life years and complete response durability, not cost justification — a distinction that requires careful payer engagement strategy.</div>
+    </div>
+    <div class="tension-card">
+      <div class="tension-num">TENSION 03</div>
+      <div class="tension-title">Reaching a specialty audience with ADC unfamiliarity</div>
+      <div class="tension-body">Bladder cancer is treated by urologic oncologists, not just medical oncologists. Many community urologists and general oncologists have less familiarity with ADC mechanisms than hematologic oncologists who have used ADCs for years. The educational and promotional burden is higher, and the prescriber universe spans multiple specialty types with different information needs.</div>
+    </div>
+    <div class="tension-card">
+      <div class="tension-num">TENSION 04</div>
+      <div class="tension-title">The Seagen acquisition must be justified commercially</div>
+      <div class="tension-body">Pfizer paid 22 times Seagen's revenue for the acquisition. Investors, analysts, and the board are watching Padcev's commercial trajectory as the primary signal of whether the $43 billion bet will generate the returns promised. This launch is not just a brand objective — it is a corporate narrative that will be evaluated in every earnings call for the next three years.</div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERABLES -->
+<section class="section section-border">
+  <div class="section-label">Package Contents</div>
+  <h2>Seven <em>Interconnected</em> Deliverables</h2>
+  <div class="deliverables-grid">
+    <div class="del-card">
+      <div class="del-num">01</div>
+      <div class="del-content">
+        <div class="del-tag">Market Analysis</div>
+        <div class="del-title">Market Landscape and ADC Science</div>
+        <div class="del-desc">Bladder cancer epidemiology, cisplatin eligibility segmentation, complete ADC mechanism explanation at three audience levels, EV-302 clinical data deep dive, and the total addressable market model that shows why this indication is a $4.5B+ annual opportunity at peak penetration.</div>
+        <div class="del-pills"><span class="pill">Epidemiology</span><span class="pill">ADC Science</span><span class="pill">TAM Model</span><span class="pill">Clinical Data</span></div>
+      </div>
+    </div>
+    <div class="del-card">
+      <div class="del-num">02</div>
+      <div class="del-content">
+        <div class="del-tag">Competitive Intelligence</div>
+        <div class="del-title">Competitive Analysis and Battle Cards</div>
+        <div class="del-desc">Full competitive hierarchy covering the Merck paradox (partner-competitor), platinum chemotherapy inertia, BMS CheckMate 901 emerging threat, and the Enhertu mindshare battle. Includes specific response scripts for each competitive scenario.</div>
+        <div class="del-pills"><span class="pill">Battle Cards</span><span class="pill">Scenario Scripts</span><span class="pill">Pipeline Watch</span></div>
+      </div>
+    </div>
+    <div class="del-card">
+      <div class="del-num">03</div>
+      <div class="del-content">
+        <div class="del-tag">HCP Targeting</div>
+        <div class="del-title">HCP Segmentation and Targeting</div>
+        <div class="del-desc">Four-segment prescriber framework covering urologic oncologists, GU medical oncologists, community oncologists, and urologists. Call plan design, territory allocation, and the decision ecosystem map showing every stakeholder who influences the treatment decision.</div>
+        <div class="del-pills"><span class="pill">4 Segments</span><span class="pill">KOL Strategy</span><span class="pill">Call Planning</span></div>
+      </div>
+    </div>
+    <div class="del-card">
+      <div class="del-num">04</div>
+      <div class="del-content">
+        <div class="del-tag">Brand Strategy</div>
+        <div class="del-title">Messaging Hierarchy and Claims Architecture</div>
+        <div class="del-desc">Full five-level messaging framework with regulatory compliance guidelines, audience-specific message variants for oncologists, payers, and patients, claim support documentation, and the MLR guardrails that define what Pfizer can and cannot say in promotion.</div>
+        <div class="del-pills"><span class="pill">MLR Compliant</span><span class="pill">4 Audiences</span><span class="pill">Claims Architecture</span></div>
+      </div>
+    </div>
+    <div class="del-card">
+      <div class="del-num">05</div>
+      <div class="del-content">
+        <div class="del-tag">Patient Experience</div>
+        <div class="del-title">Patient Journey Map</div>
+        <div class="del-desc">Complete five-stage patient journey from pre-diagnosis hematuria through long-term treatment and response monitoring, with Pfizer intervention points identified at each stage, caregiver engagement strategy, and digital touchpoint mapping for newly diagnosed patients.</div>
+        <div class="del-pills"><span class="pill">5 Stages</span><span class="pill">Caregiver Lens</span><span class="pill">Digital Touchpoints</span></div>
+      </div>
+    </div>
+    <div class="del-card">
+      <div class="del-num">06</div>
+      <div class="del-content">
+        <div class="del-tag">Market Access</div>
+        <div class="del-title">Payer Strategy and Market Access</div>
+        <div class="del-desc">US payer landscape, formulary strategy, PA criteria negotiation approach, the health economic argument for both commercial payers and Medicare, patient assistance program design, and access KPIs for the first 12 months post-launch.</div>
+        <div class="del-pills"><span class="pill">QALY Framework</span><span class="pill">PA Strategy</span><span class="pill">Part B Coverage</span></div>
+      </div>
+    </div>
+    <div class="del-card">
+      <div class="del-num">07</div>
+      <div class="del-content">
+        <div class="del-tag">Launch Execution</div>
+        <div class="del-title">Full Launch Plan with KPIs</div>
+        <div class="del-desc">Month-by-month launch timeline from T-12 to Month 12 post-approval, promotional channel plan with budget allocation, medical education strategy, congress plan, cross-functional coordination framework, and commercial KPIs with explicit month-3, month-6, and month-12 targets.</div>
+        <div class="del-pills"><span class="pill">Channel Plan</span><span class="pill">Budget Model</span><span class="pill">Commercial KPIs</span><span class="pill">Launch Week</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETITIVE LANDSCAPE -->
+<section class="section section-border">
+  <div class="section-label">Competitive Map</div>
+  <h2>The Competitive <em>Landscape</em></h2>
+  <div class="comp-grid">
+    <div class="comp-card">
+      <div class="comp-threat complex">Complex: Partner + Competitor</div>
+      <div class="comp-name">Keytruda (Merck)</div>
+      <div class="comp-desc">Padcev's combination partner. Already approved 1L for cisplatin-ineligible PD-L1-high patients. Merck has the established oncologist relationships. The critical question: does the oncologist think "Padcev with Keytruda" or "Keytruda with Padcev"? That framing determines long-term brand equity.</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-threat high">High: Standard of Care Inertia</div>
+      <div class="comp-name">Gem/Cis Chemotherapy</div>
+      <div class="comp-desc">Generic, low-cost, deeply familiar. Every oncologist learned to give GC in residency. Overcoming 30 years of prescribing habit in cisplatin-eligible patients requires peer-to-peer clinical education, NCCN guideline updates, and a patient advocacy tailwind.</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-threat emerging">Emerging: 2024 Approval</div>
+      <div class="comp-name">Nivolumab + Gem/Cis (BMS)</div>
+      <div class="comp-desc">CheckMate 901 approval August 2024. OS improvement of 2.8 months over GC alone. For cisplatin-eligible patients, BMS will promote this as an alternative to EV plus Keytruda. The EV-302 data outperforms CheckMate 901 on magnitude of benefit but cross-trial comparisons are not permissible in promotion.</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-threat high">High: Community Default</div>
+      <div class="comp-name">Gem/Carbo Chemotherapy</div>
+      <div class="comp-desc">For cisplatin-ineligible patients, gemcitabine plus carboplatin has been the default for over a decade despite median OS of approximately 9 to 10 months. This population has no other approved survival-extending option before Padcev. The commercial case here is the strongest in the entire la/mUC population.</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-threat emerging">Indirect: Mindshare Battle</div>
+      <div class="comp-name">Enhertu (AstraZeneca/DSP)</div>
+      <div class="comp-desc">Not in bladder cancer, but shaping how oncologists think about ADCs. Enhertu's ILD toxicity risk has created ADC class misperceptions that can bleed into Padcev conversations. Pfizer must actively distinguish Padcev's peripheral neuropathy and skin reaction profile from the Enhertu ILD concern.</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-threat emerging">Watch: 2026 to 2027</div>
+      <div class="comp-name">Dato-DXd (AZ/Daiichi Sankyo)</div>
+      <div class="comp-desc">TROPION-Urothelial trial is enrolling. If datopotamab deruxtecan (TROP2 ADC) shows positive first-line urothelial data, AstraZeneca enters Pfizer's primary market with strong ADC credibility. Timeline: earliest potential data readout 2026. Market penetration window before this trial reads out is Pfizer's most urgent commercial priority.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PATIENT JOURNEY SUMMARY -->
+<section class="section section-border">
+  <div class="section-label">Patient Journey</div>
+  <h2>Where Pfizer <em>Intervenes</em> in the Patient Journey</h2>
+  <div class="journey-steps">
+    <div class="journey-step">
+      <div class="journey-dot"></div>
+      <div class="journey-step-name">Symptom</div>
+      <div class="journey-step-desc">Blood in urine. Avg 3-6 month delay before evaluation.</div>
+    </div>
+    <div class="journey-step">
+      <div class="journey-dot"></div>
+      <div class="journey-step-name">Urology</div>
+      <div class="journey-step-desc">Cystoscopy, TURBT, staging confirmation.</div>
+      <div class="journey-pfizer">BCAN disease awareness</div>
+    </div>
+    <div class="journey-step">
+      <div class="journey-dot critical"></div>
+      <div class="journey-step-name">Oncology Referral</div>
+      <div class="journey-step-desc">Days to weeks to oncologist. Formulary must be approved.</div>
+      <div class="journey-pfizer">Formulary dossier submitted</div>
+    </div>
+    <div class="journey-step">
+      <div class="journey-dot critical"></div>
+      <div class="journey-step-name">Treatment Decision</div>
+      <div class="journey-step-desc">Oncologist recommends EV+K. Cisplatin eligibility assessed.</div>
+      <div class="journey-pfizer">HCP detailing + patient kit</div>
+    </div>
+    <div class="journey-step">
+      <div class="journey-dot critical"></div>
+      <div class="journey-step-name">Insurance Access</div>
+      <div class="journey-step-desc">PA submission. 3-21 days to approval. Critical delay point.</div>
+      <div class="journey-pfizer">PA support service</div>
+    </div>
+    <div class="journey-step">
+      <div class="journey-dot critical"></div>
+      <div class="journey-step-name">First Infusion</div>
+      <div class="journey-step-desc">IV administration. Nursing training required. Patient education.</div>
+      <div class="journey-pfizer">Nurse training + patient guide</div>
+    </div>
+    <div class="journey-step">
+      <div class="journey-dot"></div>
+      <div class="journey-step-name">On-Treatment</div>
+      <div class="journey-step-desc">Cycle monitoring. Toxicity management. Adherence support.</div>
+      <div class="journey-pfizer">Adherence + AE management</div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section">
+  <div class="section-label">Skills Demonstrated</div>
+  <h2>What This Project <em>Proves</em> About Pharmaceutical PMM</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">🔬</div>
+      <div class="skill-title">Scientific Fluency</div>
+      <div class="skill-desc">ADC mechanism of action, clinical trial design, OS and PFS endpoints, hazard ratios, CR rate interpretation, and mechanism-of-resistance concepts. Communicated at three audience levels: specialist, general oncologist, and patient.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">⚖️</div>
+      <div class="skill-title">Regulatory Compliance Awareness</div>
+      <div class="skill-desc">FDA promotional regulations, MLR review process, fair balance requirements, permissible vs. impermissible comparative claims, and the distinction between Medical Affairs scientific exchange and commercial promotion.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">💊</div>
+      <div class="skill-title">HCP Segmentation in Oncology</div>
+      <div class="skill-desc">Multi-specialty prescriber universe, academic-to-community diffusion dynamics, KOL identification and engagement strategy, and the distinction between sales force-led and MSL-led physician relationships.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🏥</div>
+      <div class="skill-title">Payer and Market Access Literacy</div>
+      <div class="skill-desc">Commercial, Medicare Part B, and Medicaid payer dynamics, P&T committee process, prior authorization strategy, health economic argument construction, and patient assistance program design including Medicare anti-kickback constraints.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🗺️</div>
+      <div class="skill-title">Patient Journey Mapping</div>
+      <div class="skill-desc">End-to-end patient journey from pre-diagnosis through long-term treatment, with commercial intervention points at each stage, caregiver lens integration, and digital touchpoint optimization for newly diagnosed patients.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🚀</div>
+      <div class="skill-title">Pharmaceutical Launch Excellence</div>
+      <div class="skill-desc">Pre-approval readiness planning, launch week playbook, 12-month channel plan with budget allocation, congress strategy, cross-functional alignment framework, and KPI design spanning commercial, access, and marketing effectiveness metrics.</div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-text">Pfizer Oncology — Padcev 1L — PMM Portfolio Project</div>
+    <div class="footer-disclaimer">All clinical data is drawn from publicly available sources including FDA prescribing information, NEJM EV-302 publication, and Pfizer/Astellas press releases. All strategic recommendations, projections, and commercial data are illustrative for portfolio purposes only. This is not a Pfizer or Astellas approved promotional document.</div>
+  </div>
+</footer>
+
+</body>
+</html>
